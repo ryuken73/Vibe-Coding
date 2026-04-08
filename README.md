@@ -30,6 +30,7 @@ Github연동 시 바로 배포가능 (안경프로젝트에 사용할 수 있나
 - 노트북 마이크 활성화 - 녹음 및 바로 STT화 -> 회의록 작성 => 웹앱으로 가능한가?
 - weather-map을 three.js 기반 3D로 전환가능?
 - 문서작업용
+- 검색시나리오 plan짜서 수행하기...(playwright mcp사용)
 
 # 2일차
 
@@ -61,7 +62,7 @@ Github연동 시 바로 배포가능 (안경프로젝트에 사용할 수 있나
 => 과연 워드를 채워줄 것인가? 오!! 내용을 잘 채워줌~~~
 => 내가 가진 소스를 원하는 요청대로 문서를 만들어준다. (워드까지는 잘 된다)
 
-## 스미더리(smithery) 사용하기
+## 스미더리(smithery) 사용하기 - Skills
 - skills : 사용하면 일관성있는 문서작업, 코딩, 디자인 가능하다.
   그냥 바이브 코딩으로 ppt를 만들면 그때 그때 결과물이 다르다
 - frontend-design 설치해보자 : 들어가서 보면 npx로 설치하게 되어있다.
@@ -78,5 +79,43 @@ info.md와 png 이미지 파일을 사용해서
 - plan 완료 후 build로 결과물 만들기. index.html
 - [todo]skills를 사용하고 안하고의 차이가 있나?
 - [todo]plan없이 바로 agent로 만들어보는 것과는 차이가 있나?
+
+## vercel을 활용한 배포
+- 위에서 만든 branding 파일을 vercel에 배포
+- 싼 compose 모델 사용
+- vercel login되어있으면 그냥 진행된다. (진행되는 거 보면 npx install 부터 배포 명령까지 수행)
+
+## github을 사용한 버전관리
+- 개발 -> vercel (X), 개발 -> github -> vercel (O)
+- vercel에서 github 연결해도 된다. 그럼 publish하면 바로 배포가 된다.
+- 개인 실습으로 해보자
+
+## 스미더리 - skill-generator
+- 뭐하는 건가? 콘텐츠를 평가하는 skill을 만들어본다.
+- 프롬프트에(w/ composer) 구체적으로 요구사항을 적어본다
+```
+/skill-create 방송콘텐츠 평가 스킬을 만들어줘
+```
+- 만들어진 스킬을 돌려보자 - 웹페이지 주소를 줘도 탐색을 한다.
+```
+/broadcast-content-eval 을 사용해서 https://program.kbs.co.kr/2tv/culture/reallive/pc/index.html 사이트를 평가해줘
+```
+- 현재 페이지 데이터 부족=> playwright mcp를 사용해서 하위 페이지까지 검색해서 진행
+```
+playwright mcp를 사용해서 https://program.kbs.co.kr/2tv/culture/reallive/pc/index.html 를 사용해서 프로그램 소개, 방송보기 등 하위페이지 까지 확인하고  /broadcast-content-eval 을 사용해서 사이트를 평가해줘
+```
+- 완료가 되고나면 프롬프트에 md파일로 만들어달라고도 할수있다!
+- [todo]내가 진행한 부분을 skill로 만들어 달라고 할 수도 있다....(예? 자주하는작업??)
+
+## 스미더리 - find-skill
+
+## Settings - Plugin
+- skills, mcp 등을 다 모아놓은 plugin (datadog, figma 등등..)
+- vercel. firebase 설치
+
+## Skills 참고
+https://cursor.com/ko/docs/skills
+
+
 
     
